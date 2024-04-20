@@ -39,7 +39,7 @@ dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "Installing Nodejs"
 
 id roboshop
-if [$? -ne 0 ]
+if [ $? -ne 0 ]
 then 
     useradd roboshop
     VALIDATE $? "creating roboshop user"
