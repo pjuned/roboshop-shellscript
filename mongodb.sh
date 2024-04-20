@@ -39,7 +39,7 @@ systemctl enable mongod &>> $LOGFILE
 
 VALIDATE $? "Enabling mongodb"
 
-systemctl start mongodb &>> $LOGFILE
+systemctl start mongod &>> $LOGFILE
 
 VALIDATE $? "Starting mongodb"
 
