@@ -31,3 +31,25 @@ cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 
 VALIDATE $? "Copied Mongodb Repo"
 
+dnf install mongodb-org -y &>> $LOGFILE
+
+VALIDATE $? "Installing mongodb"
+
+systemctl enable mongod &>> $LOGFILE
+
+VALIDATE $? "Enabling mongodb"
+
+systemctl start mongodb &>> $LOGFILE
+
+VALIDATE $? "Starting mongodb"
+
+sed -i 's/127.0.01/0.0.0.0/g' /etc/mongod.conf &>> $LOGFILE
+
+VALIDATE $? "Remote Access to mongodb"
+
+systemctl restart mongod &>> $LOGFILE
+
+VALIDATE $? "Restarting mongodb"
+
+
+
